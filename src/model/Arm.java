@@ -48,18 +48,29 @@ public class Arm {
 	public void setAvantBras(double avantBras){
 		this.avant_bras = avantBras;
 	}
-	public double getEpaule() {
-		return epaule;
-	}
-	public void setEpaule(double epaule) {
-		this.epaule = epaule;
-	}
-	public double getCoude() {
-		return coude;
-	}
-	public void setCoude(double coude) {
-		this.coude = coude;
+
+	public void setCoude(double angle){
+		this.coude = angle;
 	}
 	
+	public void setEpaule(double angle){
+		this.epaule = angle;
+	}
 	
+	//Ne pas oublier de passer le param echelle en tant que double , par exemple 1/5.0, pas 1/5
+	public double conversionXarm(double xPannel, int hauteur, int largeur, double echelle)
+	{
+		return (xPannel-largeur/2)*echelle;
+	}
+	
+	//Ne pas oublier de passer le param echelle en tant que double , par exemple 1/5.0, pas 1/5
+	public double conversionYarm(double yPannel, int hauteur, int largeur, double echelle)
+	{
+		return (hauteur/2-yPannel)*echelle;
+	}
+	
+	public double getRadEnDeg(double rad){
+		return rad*360/(2*Math.PI);
+	}
+
 }
