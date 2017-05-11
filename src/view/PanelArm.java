@@ -19,6 +19,9 @@ public class PanelArm extends JPanel implements Observer{
 	private int largeur;
 	private Color default_color;
 	
+	public static final int HAUTEUR = 500;
+	public static final int LARGEUR = 500;
+	
 	//Param a changer si on veut changer l'epaisseur du bras
 	int epaisseurBras = 6;
 
@@ -53,7 +56,7 @@ public class PanelArm extends JPanel implements Observer{
 		
 	}
 
-	//l'ancien bras
+	//supprime l'ancien bras
 	public void clear(Graphics g)
 	{
 		g.setColor(default_color);
@@ -77,6 +80,8 @@ public class PanelArm extends JPanel implements Observer{
 	
 	public void drawArm(double x1, double y1, double x2, double y2,Graphics g)
 	{
+		clear(g);
+		
 		g.setColor(Color.GREEN);
 		int size = epaisseurBras/2;
 		for(int i = - size ; i < size ; i ++)
@@ -91,16 +96,7 @@ public class PanelArm extends JPanel implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		Model m = (Model) o;
-		double xmain = m.getArm().getXarm();
-		double ymain = m.getArm().getYarm();
-		double xcoude = m.getArm().getXcoude();
-		double ycoude = m.getArm().getYcoude();
-		System.out.println("coude = " + xcoude);
-		System.out.println("youde = " + ycoude);
-		System.out.println("xmain = " + xmain);
-		System.out.println("ymain = " + ymain);
-		//this.drawArm(xcoude, ycoude, xmain, ymain,getGraphics());	
-		this.drawArm(largeur/2 + 20, hauteur/2 - 25, largeur/2 -20, hauteur/2 -30,getGraphics());	
+		drawArm(m.getxCoude(), m.getyCoude(), m.getxMain(), m.getyMain(),getGraphics());
 		
 	}
 	

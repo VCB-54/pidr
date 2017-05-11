@@ -2,10 +2,13 @@ package model;
 
 import java.util.Observable;
 
+import view.PanelArm;
+
 public class Model extends Observable {
 	
 	private Arm arm;
 	private MapNeuron mapNeuron;
+	private double xCoude,yCoude,xMain,yMain;
 	
 	public Model(Arm a, MapNeuron mn){
 		arm = a;
@@ -22,21 +25,64 @@ public class Model extends Observable {
 		return this.arm;
 	}
 	
-	public void deplacementBras(double epaule, double coude)
+	public void deplacementBras()
 	{
-		this.arm.setCoude(coude);
-		this.arm.setEpaule(epaule);
-		
+		randBras();
+		this.conversionTtoG(PanelArm.HAUTEUR,PanelArm.LARGEUR,10.0);
 		setChanged();
 		notifyObservers();
 	}
 	
-	public double[] conversionTtoG(int hauteur, int largeur){
-		double[] a = new double[4];
-		a[0]=this.arm.getXcoude()+largeur/2;
-		a[1]=hauteur/2-this.arm.getYcoude();
-		a[2]=this.arm.getXarm()+largeur/2;
-		a[3]=hauteur/2-this.arm.getYarm();
-		return a;
+	public void randBras()
+	{
+		
+		double randomEpaule = (Math.random() * (Math.PI*2));
+		double randomCoude = (Math.random() * (Math.PI*2));
+
+		
+		this.arm.setCoude(randomCoude);
+		this.arm.setEpaule(randomEpaule);
 	}
+	
+	public void conversionTtoG(int hauteur, int largeur, double echelle){
+		xCoude= (this.arm.getXcoude() * echelle +largeur/2.0) ;
+		yCoude= (hauteur/2.0-this.arm.getYcoude() * echelle) ;
+		xMain= (this.arm.getXarm()* echelle+largeur/2.0) ;
+		yMain= (hauteur/2.0-this.arm.getYarm()* echelle) ;
+		System.out.println(xCoude);
+	}
+
+	public double getxCoude() {
+		return xCoude;
+	}
+
+	public void setxCoude(double xCoude) {
+		this.xCoude = xCoude;
+	}
+
+	public double getyCoude() {
+		return yCoude;
+	}
+
+	public void setyCoude(double yCoude) {
+		this.yCoude = yCoude;
+	}
+
+	public double getxMain() {
+		return xMain;
+	}
+
+	public void setxMain(double xMain) {
+		this.xMain = xMain;
+	}
+
+	public double getyMain() {
+		return yMain;
+	}
+
+	public void setyMain(double yMain) {
+		this.yMain = yMain;
+	}
+	
+	
 }
