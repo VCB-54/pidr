@@ -16,7 +16,7 @@ public class PanelArm extends JPanel{
 	public PanelArm(ControllerArm ca){
 		controllerArm = ca;
 		this.setBackground(Color.red);
-		this.setSize(new Dimension(200,200));
+		this.setSize(new Dimension(500,500));
 		hauteur = this.getHeight();
 		largeur = this.getWidth();
 		System.out.println(hauteur + " -- " + largeur) ;
@@ -24,9 +24,14 @@ public class PanelArm extends JPanel{
 	
 	public void paintComponent(Graphics g)
 	{
-		System.out.println("ci");
 		this.setBackground(Color.red);
-		g.drawLine(0, hauteur/2 , largeur, hauteur/2);
-		g.drawLine(largeur/2, 0, largeur/2, 0);
+		g.drawLine(0, hauteur/2 , largeur, hauteur/2);//absisse
+		g.drawLine(largeur/2, 0, largeur/2, hauteur);
+		for(int i = 0; i <= largeur ; i+=50){
+			g.drawLine(i, hauteur/2+10, i, hauteur/2-10);
+		}
+		for(int i = 0; i <= hauteur ; i+=50){
+			g.drawLine(largeur/2+10,i , largeur/2-10, i);
+		}
 	}
 }

@@ -19,15 +19,21 @@ public class Arm {
 		this.epaule = 90;
 		this.coude = 180;
 	}
-	public double getXarm(){
+	public double getXarm(double epaule, double coude){
 		double x;
 		x = bras*Math.cos(epaule) + avant_bras*Math.cos(coude);
 		return x;
 	}
-	public double getYarm(){
+	public double getYarm(double epaule, double coude){
 		double y;
 		y = bras*Math.sin(epaule) + avant_bras*Math.sin(coude);
 		return y;
 	}
 	
+	public void setBras(double bras){
+		this.bras = bras;
+	}
+	public void setAvantBras(double avantBras){
+		this.avant_bras = avantBras;
+	}
 }
