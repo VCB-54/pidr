@@ -19,18 +19,29 @@ public class Arm {
 		this.epaule = 90;
 		this.coude = 180;
 	}
-	
-	public double getXarm(double epaule, double coude){
+
+	public double getXarm(){
 		double x;
 		x = bras*Math.cos(epaule) + avant_bras*Math.cos(coude);
 		return x;
 	}
-	
-	public double getYarm(double epaule, double coude){
+
+	public double getYarm(){
 		double y;
 		y = bras*Math.sin(epaule) + avant_bras*Math.sin(coude);
 		return y;
 	}
+	
+	public double getXcoude()
+	{
+		return Math.cos(epaule) * bras;
+	}
+	
+	public double getYcoude()
+	{
+		return Math.sin(epaule) * bras;
+	}
+	
 	
 	public void setBras(double bras){
 		this.bras = bras;
@@ -39,7 +50,7 @@ public class Arm {
 	public void setAvantBras(double avantBras){
 		this.avant_bras = avantBras;
 	}
-	
+
 	public void setCoude(double angle){
 		this.coude = angle;
 	}
@@ -63,7 +74,7 @@ public class Arm {
 	public double getRadEnDeg(double rad){
 		return rad*360/(2*Math.PI);
 	}
-	
+
 	public double getDegEnRad(double degre){
 		return degre*2*Math.PI/360;
 	}
