@@ -49,8 +49,8 @@ public class Model extends Observable {
 		yCoude= (hauteur/2.0-this.arm.getYcoude() * echelle) ;
 		xMain= (this.arm.getXarm()* echelle+largeur/2.0) ;
 		yMain= (hauteur/2.0-this.arm.getYarm()* echelle) ;
-		System.out.println(xCoude);
 	}
+	
 
 	public double getxCoude() {
 		return xCoude;

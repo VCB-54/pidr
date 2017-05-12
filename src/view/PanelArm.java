@@ -25,8 +25,6 @@ public class PanelArm extends JPanel implements Observer{
 	//Param a changer si on veut changer l'epaisseur du bras
 	int epaisseurBras = 6;
 
-	
-	
 	public PanelArm(ControllerArm ca){
 		controllerArm = ca;
 		this.controllerArm.getModel().addObserver(this);
@@ -52,8 +50,6 @@ public class PanelArm extends JPanel implements Observer{
 		for(int i = 0; i <= hauteur ; i+=50){
 			g.drawLine(largeur/2+10,i , largeur/2-10, i);
 		}
-	
-		
 	}
 
 	//supprime l'ancien bras
