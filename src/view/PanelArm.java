@@ -60,13 +60,7 @@ public class PanelArm extends JPanel implements Observer{
 	public void clear(Graphics g)
 	{
 		g.setColor(default_color);
-		for(int i = 0 ; i < hauteur; i++)
-		{
-			for(int j = 0 ; j < largeur ; j++)
-			{
-				g.drawLine(i, j, i, j);
-			}
-		}
+		g.fillRect(0, 0, largeur, hauteur);
 		g.setColor(Color.black);
 		g.drawLine(0, hauteur/2 , largeur, hauteur/2);//absisse
 		g.drawLine(largeur/2, 0, largeur/2, hauteur);
