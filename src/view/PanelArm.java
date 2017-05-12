@@ -61,15 +61,16 @@ public class PanelArm extends JPanel implements Observer{
 		for(int i = 0; i < map.size(); i ++)//afichage des neurones
 		{
 			g.fillOval((int) map.get(i).getXconverti(largeur), (int) map.get(i).getYconverti(hauteur), 10, 10);
-			for(int j = 0; j < map.size() ; j ++)
-			{
+			MapNeuron proches = map.getNplusProche(map.get(i), 2);
+			for(int j = 0; j < proches.size() ; j ++)
+			{	
 				if(i!=j)
 				{
 					int x0 = (int) map.get(i).getXconverti(largeur);
 					int y0 = (int) map.get(i).getYconverti(hauteur);
-					int x1 = (int) map.get(j).getXconverti(largeur);
-					int y1 = (int) map.get(j).getYconverti(hauteur);
-					g.drawLine(x0, y0, x1, y1);
+					int x1 = (int) proches.get(j).getXconverti(largeur);
+					int y1 = (int) proches.get(j).getYconverti(hauteur);
+					//g.drawLine(x0, y0, x1, y1);
 					
 				}
 			}

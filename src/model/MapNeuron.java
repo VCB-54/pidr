@@ -6,11 +6,14 @@ import view.PanelArm;
 
 public class MapNeuron extends ArrayList<Neuron>{
 	
-	int nb_neurones = 50; //changer ce param pour + ou - de neurones
+	int nb_neurones = 10; //changer ce param pour + ou - de neurones
 	
-	public MapNeuron(){
+	public MapNeuron(Boolean init){
 		super();
-		this.initialiser();
+		if(init)
+		{
+			this.initialiser();
+		}
 	}
 	
 	
@@ -27,17 +30,37 @@ public class MapNeuron extends ArrayList<Neuron>{
 		}
 	}
 	
+	
+	public MapNeuron copie()
+	{
+		MapNeuron res = new MapNeuron(false);
+		for(Neuron n : this)
+		{
+			res.add(n);
+		}
+		return res;
+	}
+	
 	public MapNeuron getNplusProche(Neuron neuron, int n){
-		MapNeuron ne = new MapNeuron();
-		Neuron winner = this.get(0);
-		for(int i = 0; i < n;i++){
-			for(Neuron neu : this){
-				if(neuron.distance(neu) < neuron.distance(winner) && !ne.contains(neu)){
-					winner = neu;
+		
+		MapNeuron resultat = new MapNeuron(false);
+		MapNeuron copie = this.copie();
+		
+		for(int k = 0; k < n ; k++)
+		{
+			double distance = 10000;
+			int position = -1;
+			for(int i = 0 ; i < copie.size() ; i ++)
+			{
+				if(copie.get(i).distance(neuron) < distance && copie.get(i) != neuron)
+				{
+					position = i;
+					distance = copie.get(i).distance(neuron);
 				}
 			}
-			ne.add(winner);
+			resultat.add(copie.get(position));
+			copie.remove(copie.get(position));
 		}
-		return ne;
+		return resultat;
 	}
 }

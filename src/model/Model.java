@@ -17,7 +17,7 @@ public class Model extends Observable {
 	
 	public Model(){
 		arm = new Arm();
-		mapNeuron = new MapNeuron();
+		mapNeuron = new MapNeuron(true);
 	}
 	
 	public MapNeuron getMapNeuron()

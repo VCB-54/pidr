@@ -30,7 +30,7 @@ public class Neuron {
 		return y;
 	}
 	public double distance(Neuron n){
-		return Math.sqrt(Math.pow(n.getNeuronX()-x, 2)+Math.pow(n.getNeuronY()-y, 2));
+		return Math.sqrt(Math.pow(x-n.getNeuronX(), 2)+Math.pow(n.getNeuronY()-y, 2));
 	}
 
 }
