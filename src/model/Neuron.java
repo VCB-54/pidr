@@ -3,8 +3,8 @@ package model;
 public class Neuron {
 	private double x;
 	private double y;
-	private double teta1;
-	private double teta2;
+	private double teta1;//epaule
+	private double teta2;//coude
 	
 	public Neuron(double x, double y, double teta1, double teta2){
 		this.x = x;
@@ -17,5 +17,14 @@ public class Neuron {
 		a[0]=x+largeur/2;
 		a[1]=hauteur/2-y;
 		return a;
+	}
+	public double getNeuronX(){
+		return x;
+	}
+	public double getNeuronY(){
+		return y;
+	}
+	public double distance(Neuron n){
+		return Math.sqrt(Math.pow(n.getNeuronX()-x, 2)+Math.pow(n.getNeuronY()-y, 2));
 	}
 }
