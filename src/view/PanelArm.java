@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import controller.ControllerArm;
+import model.MapNeuron;
 import model.Model;
 
 public class PanelArm extends JPanel implements Observer{
@@ -52,6 +53,31 @@ public class PanelArm extends JPanel implements Observer{
 		}
 	}
 
+	
+	public void paintNeurone(Graphics g)
+	{
+		g.setColor(Color.BLUE);
+		MapNeuron map = this.controllerArm.getModel().getMapNeuron();
+		for(int i = 0; i < map.size(); i ++)//afichage des neurones
+		{
+			g.fillOval((int) map.get(i).getXconverti(largeur), (int) map.get(i).getYconverti(hauteur), 10, 10);
+			for(int j = 0; j < map.size() ; j ++)
+			{
+				if(i!=j)
+				{
+					int x0 = (int) map.get(i).getXconverti(largeur);
+					int y0 = (int) map.get(i).getYconverti(hauteur);
+					int x1 = (int) map.get(j).getXconverti(largeur);
+					int y1 = (int) map.get(j).getYconverti(hauteur);
+					g.drawLine(x0, y0, x1, y1);
+					
+				}
+			}
+		}
+		
+		
+	}
+	
 	//supprime l'ancien bras
 	public void clear(Graphics g)
 	{
@@ -66,6 +92,7 @@ public class PanelArm extends JPanel implements Observer{
 		for(int i = 0; i <= hauteur ; i+=50){
 			g.drawLine(largeur/2+10,i , largeur/2-10, i);
 		}
+		paintNeurone(g);
 	}
 	
 	public void drawArm(double x1, double y1, double x2, double y2,Graphics g)

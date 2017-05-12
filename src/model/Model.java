@@ -20,6 +20,10 @@ public class Model extends Observable {
 		mapNeuron = new MapNeuron();
 	}
 	
+	public MapNeuron getMapNeuron()
+	{
+		return this.mapNeuron;
+	}
 	public Arm getArm()
 	{
 		return this.arm;
